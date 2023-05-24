@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@inertiajs/progress": "^0.2.7",
-        "@inertiajs/vue3": "^1.0.6"
+        "@inertiajs/vue3": "^1.0.6",
+        "nprogress": "^0.2.0"
     }
 }
