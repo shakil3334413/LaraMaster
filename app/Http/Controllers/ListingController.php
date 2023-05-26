@@ -8,6 +8,10 @@ use App\Http\Requests\ListingRequest;
 
 class ListingController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Listing::class, 'listing');
+    }
 
     public function index()
     {
@@ -21,13 +25,18 @@ class ListingController extends Controller
 
     public function create()
     {
+        // $this->authorize('create', Listing::class);
         return inertia('Listing/Create');
     }
 
     public function store(ListingRequest $request)
     {
+        // if (Auth::user()->cannot('view', $listing)) {
+        //     abort(403);
+        // }
+        // $this->authorize('view', $listing);
 
-        Listing::create($request->all());
+        $request->user()->listings()->create($request->all());
         return redirect()->route('listing.index')
                 ->with('success','Listing was created!');
     }

@@ -13,8 +13,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Test User',
+            'name' => 'Test User 1',
             'email' => 'test@example.com',
+            'is_admin' => true
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User 2',
+            'email' => 'test2@example.com',
+            'is_admin' => false
         ]);
 
         $this->call(ListingSeeder::class);
