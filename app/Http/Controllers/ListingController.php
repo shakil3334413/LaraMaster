@@ -30,23 +30,7 @@ class ListingController extends Controller
         );
     }
 
-    public function create()
-    {
-        // $this->authorize('create', Listing::class);
-        return inertia('Listing/Create');
-    }
-
-    public function store(ListingRequest $request)
-    {
-        // if (Auth::user()->cannot('view', $listing)) {
-        //     abort(403);
-        // }
-        // $this->authorize('view', $listing);
-
-        $request->user()->listings()->create($request->all());
-        return redirect()->route('listing.index')
-                ->with('success','Listing was created!');
-    }
+    
 
     public function show(Listing $listing)
     {
@@ -56,28 +40,5 @@ class ListingController extends Controller
                 'listing' => $listing
             ]
         );
-    }
-
-    public function edit(Listing $listing)
-    {
-       return inertia(
-            'Listing/Edit',
-            [
-                'listing' => $listing
-            ]
-        );
-    }
-
-    public function update(ListingRequest $request, Listing $listing)
-    {
-        $listing->update($request->all());
-        return redirect()->route('listing.index')
-        ->with('success','Listing was Updated!');
-    }
-
-    public function destroy(Listing $listing)
-    {
-        $listing->delete();
-        return redirect()->back()->with('success','Listing was Deleted!');
     }
 }

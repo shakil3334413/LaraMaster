@@ -12,10 +12,6 @@
                     <ListingAddress :listing="listing" class="text-gray-500" />
                 </Link>
             </div>
-            <div>
-                    <Link :href="route('listing.edit',{listing: listing.id})" as="button">Edit</Link>&nbsp;
-                    <Link :href="route('listing.destroy',{listing: listing.id})" method="DELETE" as="button">Delete</Link>
-            </div>
         </Box>
 </template>
 <script setup>
@@ -27,7 +23,7 @@
     import { useMonthlyPayment } from '@/Composables/useMonthlyPayment';
 
 
-    const props = defineProps({listing: Object})
+    const props = defineProps({ listing: Object })
     const { monthlyPayment } = useMonthlyPayment(
         props.listing.price, 2.5, 25,
     )
