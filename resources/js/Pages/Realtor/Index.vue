@@ -14,6 +14,7 @@
 
           <ListingAddress :listing="listing" />
         </div>
+        <section>
         <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
           <a
             class="btn-outline text-xs font-medium" 
@@ -39,6 +40,12 @@
             Restore
           </Link>
         </div>
+        <div class="mt-2">
+            <Link :href="route('realtor.listing.image.create', { listing: listing.id })" class="block w-full btn-outline text-xs font-medium text-center">
+            Images({{ listing.images_count }})
+            </Link>
+          </div>
+      </section>
       </div>
     </Box>
   </section>
